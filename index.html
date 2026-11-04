@@ -3,457 +3,442 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GraficaPro — Sistema de Gestão para Gráficas e Malharias</title>
-<meta name="description" content="Software de gestão completo para gráficas e confecções. Orçamentos, OS, malharia, financeiro e muito mais."/>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖨️</text></svg>"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<title>Gráfica Pró — Sistema de gestão para gráficas, malharias e comunicação visual</title>
+<meta name="description" content="Gestão que imprime resultado: orçamentos, ordens de serviço, malharia, financeiro, preço certo e WhatsApp integrado — num só sistema, feito por quem é do ramo."/>
+<meta name="theme-color" content="#0B1220"/>
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png"/>
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Gráfica Pró — Gestão que imprime resultado"/>
+<meta property="og:description" content="Sistema de gestão para gráficas, malharias e comunicação visual. Teste com a nossa equipe pelo WhatsApp."/>
+<meta property="og:image" content="https://www.graficaprosistema.com.br/assets/og-image.png"/>
+<meta property="og:url" content="https://www.graficaprosistema.com.br/"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --azul:#1B3A8C;--azul2:#2563EB;--azul3:#3B82F6;
-  --verde:#10B981;--verde2:#059669;
-  --laranja:#F59E0B;
-  --escuro:#0A0F1E;--escuro2:#0F172A;--escuro3:#1E293B;
-  --cinza:#64748B;--cinza2:#94A3B8;--cinza3:#CBD5E1;
-  --branco:#FFFFFF;
+  --noite:#0B1220; --noite2:#111A2E; --ardosia:#1E293B; --nevoa:#F4F6FA; --linha:#E2E8F0;
+  --ciano:#00AEEF; --magenta:#EC008C; --amarelo:#FFD100; --preto:#111111; --verde:#1FA637; --verde-esc:#178A2C;
+  --cinza:#64748B; --cinza-claro:#94A3B8; --texto:#334155;
+  --raio:20px;
 }
+*{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--escuro);color:var(--branco);overflow-x:hidden}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--preto);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img,svg,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ciano);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,15,30,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)}
-.nav-logo{font-size:1.25rem;font-weight:800;color:var(--branco);text-decoration:none;display:flex;align-items:center;gap:8px}
-.nav-logo span{color:var(--azul3)}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{color:var(--cinza2);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:var(--branco)}
-.nav-cta{background:var(--azul2);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-weight:600;font-size:.9rem;cursor:pointer;text-decoration:none;transition:background .2s}
-.nav-cta:hover{background:var(--azul3)}
-@media(max-width:768px){.nav-links{display:none}}
+/* faixa CMYK: assinatura visual acima dos títulos */
+.cmyk{display:flex;gap:6px;margin-bottom:18px}
+.cmyk i{display:block;width:34px;height:7px;transform:skewX(-28deg);border-radius:1px}
+.cmyk i:nth-child(1){background:var(--ciano)}.cmyk i:nth-child(2){background:var(--magenta)}
+.cmyk i:nth-child(3){background:var(--amarelo)}.cmyk i:nth-child(4){background:var(--preto)}
+.escuro .cmyk i:nth-child(4){background:#fff}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;padding:80px 24px 60px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(37,99,235,.25) 0%,transparent 70%)}
-.hero::after{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(59,130,246,.15) 0%,transparent 70%)}
-.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.15);border:1px solid rgba(59,130,246,.3);border-radius:100px;padding:6px 16px;font-size:.8rem;color:var(--azul3);font-weight:600;margin-bottom:24px}
-.hero-badge::before{content:'●';color:var(--verde);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1.1;margin-bottom:20px}
-.hero h1 span{background:linear-gradient(135deg,var(--azul3),var(--verde));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero-sub{font-size:1.1rem;color:var(--cinza2);line-height:1.7;margin-bottom:36px;max-width:520px}
-.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
-.btn-wpp{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:14px 28px;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 4px 24px rgba(37,211,102,.3)}
-.btn-wpp:hover{background:#128C7E;transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,.4)}
-.btn-demo{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:14px 28px;border-radius:10px;font-weight:600;font-size:1rem;text-decoration:none;transition:all .2s}
-.btn-demo:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
-.hero-stats{display:flex;gap:32px;margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,.08)}
-.hero-stat-num{font-size:1.8rem;font-weight:800;color:var(--branco)}
-.hero-stat-lbl{font-size:.8rem;color:var(--cinza2);margin-top:2px}
+h1,h2,h3{line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:900;max-width:22ch}
+.sub{color:var(--texto);font-size:1.08rem;max-width:60ch;margin-top:14px}
+.escuro .sub{color:var(--cinza-claro)}
+section{padding:96px 0}
+.escuro{background:var(--noite);color:#fff}
+.nevoa{background:var(--nevoa)}
 
-/* DASHBOARD MOCKUP */
-.hero-visual{background:var(--escuro2);border:1px solid rgba(255,255,255,.1);border-radius:20px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,.5);position:relative}
-.dash-topbar{background:var(--escuro3);padding:14px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06)}
-.dash-dot{width:10px;height:10px;border-radius:50%}
-.dash-dot.r{background:#FF5F57}.dash-dot.y{background:#FFBD2E}.dash-dot.g{background:#28CA41}
-.dash-title{margin-left:8px;font-size:.8rem;color:var(--cinza2);font-weight:500}
-.dash-body{padding:20px}
-.dash-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
-.dash-kpi{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px}
-.dash-kpi-val{font-size:1.3rem;font-weight:800}
-.dash-kpi-val.g{color:var(--verde)}
-.dash-kpi-val.b{color:var(--azul3)}
-.dash-kpi-val.o{color:var(--laranja)}
-.dash-kpi-val.w{color:var(--branco)}
-.dash-kpi-lbl{font-size:.7rem;color:var(--cinza2);margin-top:3px}
-.dash-os{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:14px}
-.dash-os-title{font-size:.75rem;color:var(--cinza2);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
-.dash-os-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.78rem}
-.dash-os-item:last-child{border:0}
-.dash-tag{padding:3px 8px;border-radius:100px;font-size:.65rem;font-weight:600}
-.tag-green{background:rgba(16,185,129,.15);color:var(--verde)}
-.tag-blue{background:rgba(59,130,246,.15);color:var(--azul3)}
-.tag-orange{background:rgba(245,158,11,.15);color:var(--laranja)}
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 1rem/1 'Poppins',sans-serif;padding:16px 28px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .15s,border-color .15s}
+.btn-verde{background:var(--verde);color:#fff}.btn-verde:hover{background:var(--verde-esc)}
+.btn-contorno{border-color:rgba(255,255,255,.35);color:#fff}.btn-contorno:hover{border-color:#fff}
+.btn-contorno.claro{border-color:var(--preto);color:var(--preto)}
 
-/* SECOES COMUNS */
-section{padding:96px 24px}
-.sec-inner{max-width:1200px;margin:0 auto}
-.sec-tag{display:inline-block;background:rgba(37,99,235,.15);border:1px solid rgba(59,130,246,.3);color:var(--azul3);font-size:.78rem;font-weight:700;padding:4px 14px;border-radius:100px;margin-bottom:16px;text-transform:uppercase;letter-spacing:.08em}
-.sec-title{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;line-height:1.2;margin-bottom:16px}
-.sec-sub{color:var(--cinza2);font-size:1rem;line-height:1.7;max-width:600px}
-.sec-head{text-align:center;margin-bottom:64px}
-.sec-head .sec-sub{margin:0 auto}
+/* topo */
+.topo{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+.topo .wrap{display:flex;align-items:center;gap:32px;height:76px}
+.topo .marca img{height:44px;width:auto}
+.topo nav{display:flex;gap:28px;margin-left:auto}
+.topo nav a{color:#CBD5E1;text-decoration:none;font-weight:500;font-size:.95rem}
+.topo nav a:hover{color:#fff}
+.topo .btn{padding:12px 22px;font-size:.92rem}
 
-/* VÍDEO */
-.video-sec{background:linear-gradient(180deg,var(--escuro) 0%,var(--escuro2) 100%)}
-.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.video-points{list-style:none;margin:28px 0 36px;display:flex;flex-direction:column;gap:14px}
-.video-points li{display:flex;align-items:flex-start;gap:12px;color:var(--cinza3);font-size:.95rem;line-height:1.5}
-.video-points li::before{content:'✓';color:var(--verde);font-weight:800;font-size:1rem;flex-shrink:0;margin-top:1px}
-.video-frame{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 32px 80px rgba(0,0,0,.5)}
-.video-frame video{display:block;width:100%}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:84px 0 110px}
+.hero::before{content:"";position:absolute;inset:0;opacity:.32;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cg fill='none' stroke-width='3' transform='rotate(-14 120 120)'%3E%3Crect x='20' y='22' width='72' height='98' rx='14' stroke='%2300AEEF'/%3E%3Crect x='140' y='76' width='72' height='98' rx='14' stroke='%23EC008C'/%3E%3Crect x='66' y='150' width='72' height='98' rx='14' stroke='%23FFD100'/%3E%3C/g%3E%3C/svg%3E")}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.4rem);font-weight:900}
+.hero .sub{font-size:1.15rem}
+.acoes{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.publico{display:flex;flex-wrap:wrap;gap:10px;margin-top:38px}
+.publico span{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border:1px solid rgba(255,255,255,.14);border-radius:999px;font-size:.9rem;color:#E2E8F0}
+.publico b{width:10px;height:10px;border-radius:50%}
 
-/* RECURSOS */
-.recursos-sec{background:var(--escuro2)}
-.rec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.rec-card{background:var(--escuro3);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:28px;transition:all .3s;cursor:default}
-.rec-card:hover{border-color:rgba(59,130,246,.4);transform:translateY(-4px);box-shadow:0 16px 48px rgba(37,99,235,.15)}
-.rec-ico{font-size:2rem;margin-bottom:16px}
-.rec-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
-.rec-card p{color:var(--cinza2);font-size:.875rem;line-height:1.6}
+/* palco: painel apoiado nas folhas CMYK (o elemento-assinatura) */
+.palco{position:relative;height:470px}
+.folha{position:absolute;width:62%;height:78%;border-radius:26px;left:2%;top:4%;transform-origin:100% 100%;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.folha.c{background:var(--ciano);transform:rotate(-21deg)}
+.folha.m{background:var(--magenta);transform:rotate(-14deg);left:9%}
+.folha.y{background:var(--amarelo);transform:rotate(-7deg);left:16%}
+.palco.inicio .folha{transform:rotate(0)}
+.painel{position:absolute;right:0;bottom:0;width:82%;background:var(--noite2);border:1px solid rgba(255,255,255,.08);border-radius:22px;box-shadow:0 30px 60px rgba(0,0,0,.45);padding:20px}
+.painel-topo{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.painel-topo img{width:28px;height:28px}
+.painel-topo strong{font-weight:700;font-size:.95rem}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpi{background:var(--noite);border-radius:14px;padding:12px 14px;border-left:4px solid var(--verde)}
+.kpi:nth-child(2){border-color:var(--ciano)}.kpi:nth-child(3){border-color:var(--magenta)}.kpi:nth-child(4){border-color:var(--amarelo)}
+.kpi small{display:block;color:var(--cinza-claro);font-size:.74rem}
+.kpi b{font-size:1.35rem;font-weight:800}
+.lista{margin-top:14px;display:grid;gap:8px}
+.lista div{display:flex;justify-content:space-between;align-items:center;background:var(--noite);border-radius:12px;padding:10px 14px;font-size:.82rem;color:#CBD5E1}
+.tag{font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:999px}
+.t-prod{background:rgba(255,209,0,.15);color:var(--amarelo)}.t-ok{background:rgba(31,166,55,.18);color:#4ADE80}
+.t-arte{background:rgba(236,0,140,.18);color:#F472B6}
 
-/* MÓDULOS */
-.mods-sec{}
-.mods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
-.mod-item{background:var(--escuro3);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:18px 20px;font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:10px;transition:all .2s}
-.mod-item:hover{border-color:rgba(59,130,246,.4);color:var(--azul3)}
+/* para quem */
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.seg{border-radius:var(--raio);padding:30px;background:#fff;border:1px solid var(--linha);border-top:6px solid var(--c)}
+.seg h3{font-size:1.35rem;font-weight:800;margin:14px 0 8px}
+.seg p{color:var(--texto)}
+.seg svg{width:44px;height:44px;color:var(--c)}
 
-/* COMO FUNCIONA */
-.como-sec{background:var(--escuro2)}
-.como-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:48px;position:relative}
-.como-steps::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--azul2),var(--verde));opacity:.3}
-.como-step{text-align:center;position:relative}
-.como-num{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--azul2),var(--azul3));display:flex;align-items:center;justify-content:center;font-size:1.4rem;font-weight:800;margin:0 auto 20px;box-shadow:0 8px 24px rgba(37,99,235,.3)}
-.como-step h3{font-size:1rem;font-weight:700;margin-bottom:8px}
-.como-step p{color:var(--cinza2);font-size:.875rem;line-height:1.6}
+/* vídeo */
+.video-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
+.pontos{list-style:none;margin:26px 0 32px;display:grid;gap:12px}
+.pontos li{display:flex;gap:12px;color:#CBD5E1}
+.pontos li::before{content:"";flex:0 0 10px;height:10px;margin-top:9px;border-radius:2px;transform:skewX(-20deg);background:var(--ciano)}
+.pontos li:nth-child(2)::before{background:var(--magenta)}.pontos li:nth-child(3)::before{background:var(--amarelo)}.pontos li:nth-child(4)::before{background:var(--verde)}
+.quadro{border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 50px rgba(0,0,0,.4);background:#000}
 
-/* PLANOS */
-.planos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
-.plano-card{background:var(--escuro3);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px;position:relative;transition:all .3s}
-.plano-card.destaque{background:linear-gradient(135deg,rgba(37,99,235,.2),rgba(16,185,129,.1));border-color:var(--azul3);box-shadow:0 24px 64px rgba(37,99,235,.2)}
-.plano-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--azul2),var(--verde2));color:#fff;font-size:.75rem;font-weight:700;padding:5px 18px;border-radius:100px;white-space:nowrap}
-.plano-nome{font-size:.85rem;font-weight:700;color:var(--azul3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px}
-.plano-preco{font-size:2.8rem;font-weight:900;line-height:1;margin-bottom:4px}
-.plano-preco span{font-size:1rem;font-weight:500;color:var(--cinza2)}
-.plano-periodo{font-size:.8rem;color:var(--cinza2);margin-bottom:28px}
-.plano-lista{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:12px}
-.plano-lista li{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--cinza3)}
-.plano-lista li::before{content:'✓';color:var(--verde);font-weight:800;flex-shrink:0}
-.btn-plano{display:block;text-align:center;padding:14px;border-radius:10px;font-weight:700;font-size:.95rem;text-decoration:none;transition:all .2s;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)}
-.btn-plano:hover{background:rgba(255,255,255,.15)}
-.btn-plano.dest{background:var(--azul2);border-color:var(--azul2);box-shadow:0 8px 24px rgba(37,99,235,.3)}
-.btn-plano.dest:hover{background:var(--azul3);transform:translateY(-2px)}
+/* recursos */
+.grade{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.rec{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:26px}
+.rec .ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--nevoa);color:var(--c);margin-bottom:16px}
+.rec .ico svg{width:28px;height:28px}
+.rec h3{font-size:1.08rem;font-weight:700;margin-bottom:6px}
+.rec p{color:var(--texto);font-size:.93rem}
+.rec.novo{border-color:var(--verde)}
+.rec.novo h3::after{content:"novo";margin-left:8px;font-size:.68rem;font-weight:600;color:#fff;background:var(--verde);padding:2px 8px;border-radius:999px;vertical-align:middle}
 
-/* CONTATO */
-.contato-sec{background:linear-gradient(135deg,rgba(37,99,235,.12) 0%,rgba(16,185,129,.08) 100%);border-top:1px solid rgba(255,255,255,.06)}
-.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.contato-info{display:flex;flex-direction:column;gap:20px;margin-top:32px}
-.contato-item{display:flex;align-items:center;gap:14px;color:var(--cinza3);font-size:.95rem}
-.contato-item-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.contato-item-ico.g{background:rgba(37,211,102,.15)}
-.contato-item-ico.b{background:rgba(37,99,235,.15)}
-.contato-form{background:var(--escuro3);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:16px}
-.contato-form h3{font-size:1.1rem;font-weight:700;margin-bottom:4px}
-.contato-form p{color:var(--cinza2);font-size:.875rem;margin-bottom:8px}
-.cf-input{background:var(--escuro2);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:12px 16px;color:#fff;font-size:.9rem;font-family:inherit;transition:border .2s;outline:none}
-.cf-input:focus{border-color:var(--azul3)}
-.cf-input::placeholder{color:var(--cinza)}
-textarea.cf-input{resize:vertical;min-height:100px}
-.btn-wpp-form{display:flex;align-items:center;justify-content:center;gap:10px;background:#25D366;color:#fff;padding:15px;border-radius:10px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .2s;box-shadow:0 4px 20px rgba(37,211,102,.25);cursor:pointer;border:none;font-family:inherit}
-.btn-wpp-form:hover{background:#128C7E;transform:translateY(-2px)}
+/* módulos */
+.modulos{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.modulos span{background:#fff;border:1px solid var(--linha);padding:12px 18px;border-radius:12px;font-weight:600;font-size:.95rem;display:inline-flex;gap:10px;align-items:center}
+.modulos span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--ciano))}
+.modulos span:nth-child(4n+2){--c:var(--magenta)}.modulos span:nth-child(4n+3){--c:var(--amarelo)}.modulos span:nth-child(4n){--c:var(--verde)}
 
-/* FOOTER */
-footer{background:var(--escuro2);border-top:1px solid rgba(255,255,255,.06);padding:40px 24px}
-.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
-.footer-logo{font-size:1.1rem;font-weight:800}
-.footer-logo span{color:var(--azul3)}
-.footer-links{display:flex;gap:24px}
-.footer-links a{color:var(--cinza2);text-decoration:none;font-size:.85rem;transition:color .2s}
-.footer-links a:hover{color:#fff}
-.footer-copy{color:var(--cinza);font-size:.8rem;margin-top:4px}
+/* como funciona (sequência real → numerada) */
+.passos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px;counter-reset:p}
+.passo{padding:26px 24px;border-radius:18px;background:var(--nevoa);position:relative}
+.passo::before{counter-increment:p;content:counter(p);display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--noite);color:#fff;font-weight:800;margin-bottom:16px}
+.passo:nth-child(1)::before{background:var(--ciano)}.passo:nth-child(2)::before{background:var(--magenta)}.passo:nth-child(3)::before{background:var(--amarelo);color:var(--preto)}.passo:nth-child(4)::before{background:var(--verde)}
+.passo h3{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.passo p{color:var(--texto);font-size:.93rem}
 
-/* WPP FLOAT */
-.wpp-float{position:fixed;bottom:28px;right:28px;z-index:99;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;text-decoration:none;box-shadow:0 8px 32px rgba(37,211,102,.4);transition:all .3s;animation:wppPulse 3s infinite}
-@keyframes wppPulse{0%,100%{box-shadow:0 8px 32px rgba(37,211,102,.4)}50%{box-shadow:0 8px 48px rgba(37,211,102,.7)}}
-.wpp-float:hover{transform:scale(1.1)}
+/* planos */
+.planos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px;align-items:stretch}
+.plano{background:var(--noite2);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:34px 30px;display:flex;flex-direction:column}
+.plano.destaque{border:2px solid var(--verde);box-shadow:0 20px 50px rgba(31,166,55,.18);position:relative}
+.selo{position:absolute;top:-14px;left:30px;background:var(--verde);color:#fff;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:999px}
+.plano h3{font-size:1.3rem;font-weight:800}
+.plano .para{color:var(--cinza-claro);font-size:.9rem;margin-top:4px}
+.preco{font-size:2.6rem;font-weight:900;margin:22px 0 4px}
+.preco small{font-size:1rem;font-weight:500;color:var(--cinza-claro)}
+.plano ul{list-style:none;margin:20px 0 30px;display:grid;gap:10px;flex:1}
+.plano li{display:flex;gap:10px;color:#CBD5E1;font-size:.95rem}
+.plano li svg{flex:0 0 20px;width:20px;height:20px;color:var(--verde);margin-top:3px}
+.plano .btn{width:100%}
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero-inner,.video-grid,.contato-grid{grid-template-columns:1fr;gap:48px}
-  .hero-visual,.hero-stats{display:none}
-  .rec-grid{grid-template-columns:1fr 1fr}
-  .mods-grid{grid-template-columns:1fr 1fr}
-  .como-steps{grid-template-columns:1fr 1fr}
-  .como-steps::before{display:none}
-  .planos-grid{grid-template-columns:1fr}
+/* contato */
+.contato{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.infos{display:grid;gap:18px;margin-top:34px}
+.info{display:flex;gap:16px;align-items:center}
+.info .ico{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;background:var(--nevoa);color:var(--c)}
+.info .ico svg{width:24px;height:24px}
+.info strong{display:block;font-weight:700}
+.info span{color:var(--texto)}
+.form{background:var(--noite);color:#fff;border-radius:24px;padding:36px}
+.form h3{font-size:1.4rem;font-weight:800}
+.form p{color:var(--cinza-claro);font-size:.95rem;margin:6px 0 22px}
+.form label{display:block;font-size:.85rem;font-weight:500;color:#CBD5E1;margin:14px 0 6px}
+.campo{width:100%;background:var(--noite2);border:1px solid #334155;border-radius:12px;padding:14px 16px;color:#fff;font:400 1rem 'Poppins',sans-serif}
+.campo:focus{outline:none;border-color:var(--ciano)}
+.form .btn{width:100%;margin-top:24px}
+.aviso{display:none;color:#FCA5A5;font-size:.88rem;margin-top:10px}
+
+/* rodapé */
+footer{background:var(--noite);color:#CBD5E1;padding:56px 0 40px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:center}
+footer img{height:56px;width:auto}
+footer nav{display:flex;gap:24px;flex-wrap:wrap}
+footer nav a{text-decoration:none}footer nav a:hover{color:#fff}
+.direitos{width:100%;font-size:.85rem;color:var(--cinza);border-top:1px solid rgba(255,255,255,.08);padding-top:24px}
+
+.wpp{position:fixed;right:22px;bottom:22px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.wpp svg{width:32px;height:32px;color:#fff}
+
+@media (max-width:980px){
+  .hero .wrap,.video-grid,.contato{grid-template-columns:1fr}
+  .palco{height:400px;max-width:560px}
+  .grade{grid-template-columns:repeat(2,1fr)}
+  .passos{grid-template-columns:repeat(2,1fr)}
+  .planos,.tres{grid-template-columns:1fr}
+  .topo nav{display:none}
+  .topo .btn{margin-left:auto}
 }
-@media(max-width:600px){
-  .rec-grid,.mods-grid,.como-steps{grid-template-columns:1fr}
-  section{padding:64px 20px}
+@media (max-width:560px){
+  section{padding:72px 0}
+  .grade,.passos{grid-template-columns:1fr}
+  .topo .marca img{height:36px}
+  .topo .btn{padding:10px 16px;font-size:.85rem}
+  .palco{height:330px}
+  .kpi b{font-size:1.1rem}
 }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Gráfica<span>Pró</span></a>
-  <ul class="nav-links">
-    <li><a href="#recursos">Recursos</a></li>
-    <li><a href="#modulos">Módulos</a></li>
-    <li><a href="#planos">Planos</a></li>
-    <li><a href="#contato">Contato</a></li>
-  </ul>
-  <a href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C+quero+ser+cliente+GraficaPr%C3%B3.+Pode+me+passar+os+planos%3F" target="_blank" class="nav-cta">Falar no WhatsApp →</a>
-</nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wpp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.56.93.95-3.47-.23-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.21-4.24 9.44-9.45 9.44m8.04-17.48A11.3 11.3 0 0 0 12.04.7C5.77.7.67 5.8.67 12.06c0 2 .52 3.96 1.52 5.68L.57 23.65l6.03-1.58a11.3 11.3 0 0 0 5.44 1.39h.01c6.27 0 11.37-5.1 11.37-11.37 0-3.04-1.18-5.89-3.33-8.04"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+</svg>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
+<header class="topo">
+  <div class="wrap">
+    <a class="marca" href="#" aria-label="Gráfica Pró — início"><img src="/assets/logo-horizontal-negativa.svg" alt="Gráfica Pró" width="152" height="44"/></a>
+    <nav aria-label="Seções">
+      <a href="#para-quem">Para quem</a><a href="#recursos">Recursos</a><a href="#modulos">Módulos</a><a href="#planos">Planos</a><a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-verde" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C%20quero%20ser%20cliente%20Gr%C3%A1fica%20Pr%C3%B3.%20Pode%20me%20passar%20os%20planos%3F">Falar no WhatsApp</a>
+  </div>
+</header>
+
+<main>
+<section class="hero escuro">
+  <div class="wrap">
     <div>
-      <div class="hero-badge">🟢 Sistema online 24h</div>
-      <h1>Sua gráfica organizada,<br/><span>do orçamento à entrega</span></h1>
-      <p class="hero-sub">GraficaPró é o sistema de gestão completo para gráficas e confecções. Controle OS, malharia, financeiro e produção em um só lugar.</p>
-      <div class="hero-btns">
-        <a href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C+quero+ser+cliente+GraficaPr%C3%B3.+Pode+me+passar+os+planos%3F" target="_blank" class="btn-wpp">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.122 1.524 5.855L.055 23.454a.75.75 0 00.919.919l5.647-1.47A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.894 0-3.669-.494-5.203-1.36l-.374-.214-3.879 1.009 1.012-3.793-.233-.386A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Quero ser cliente
-        </a>
-        <a href="https://app.graficaprosistema.com.br" target="_blank" class="btn-demo">Acessar sistema →</a>
+      <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <h1>Gestão que imprime resultado.</h1>
+      <p class="sub">O sistema feito por quem é do ramo: orçamentos, produção, malharia, financeiro e WhatsApp num lugar só — do pedido à entrega.</p>
+      <div class="acoes">
+        <a class="btn btn-verde" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C%20quero%20ser%20cliente%20Gr%C3%A1fica%20Pr%C3%B3.%20Pode%20me%20passar%20os%20planos%3F"><svg width="20" height="20"><use href="#i-wpp"/></svg>Quero ser cliente</a>
+        <a class="btn btn-contorno" href="https://app.graficaprosistema.com.br">Acessar o sistema</a>
       </div>
-      <div class="hero-stats">
-        <div><div class="hero-stat-num">+500</div><div class="hero-stat-lbl">OS controladas</div></div>
-        <div><div class="hero-stat-num">12+</div><div class="hero-stat-lbl">Módulos inclusos</div></div>
-        <div><div class="hero-stat-num">100%</div><div class="hero-stat-lbl">Na nuvem</div></div>
+      <div class="publico">
+        <span><b style="background:var(--ciano)"></b>Gráficas</span>
+        <span><b style="background:var(--magenta)"></b>Malharias</span>
+        <span><b style="background:var(--amarelo)"></b>Comunicação visual</span>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="dash-topbar">
-        <div class="dash-dot r"></div><div class="dash-dot y"></div><div class="dash-dot g"></div>
-        <span class="dash-title">GraficaPró — Dashboard</span>
-      </div>
-      <div class="dash-body">
-        <div class="dash-kpis">
-          <div class="dash-kpi"><div class="dash-kpi-val g">R$ 18.450</div><div class="dash-kpi-lbl">Recebido no mês</div></div>
-          <div class="dash-kpi"><div class="dash-kpi-val b">24</div><div class="dash-kpi-lbl">OS abertas</div></div>
-          <div class="dash-kpi"><div class="dash-kpi-val o">7</div><div class="dash-kpi-lbl">A receber hoje</div></div>
-          <div class="dash-kpi"><div class="dash-kpi-val w">142</div><div class="dash-kpi-lbl">Clientes ativos</div></div>
+    <div class="palco inicio" id="palco" aria-hidden="true">
+      <div class="folha c"></div><div class="folha m"></div><div class="folha y"></div>
+      <div class="painel">
+        <div class="painel-topo"><img src="/assets/simbolo-negativo.svg" alt=""/><strong>Gráfica Pró</strong></div>
+        <div class="kpis">
+          <div class="kpi"><small>Recebido no mês</small><b>R$ 18.450</b></div>
+          <div class="kpi"><small>OS abertas</small><b>24</b></div>
+          <div class="kpi"><small>Pedidos de malharia</small><b>21</b></div>
+          <div class="kpi"><small>A receber hoje</small><b>7</b></div>
         </div>
-        <div class="dash-os">
-          <div class="dash-os-title">Ordens de Serviço recentes</div>
-          <div class="dash-os-item"><span>OS-00241 · Camisetas empresa</span><span class="dash-tag tag-orange">Produção</span></div>
-          <div class="dash-os-item"><span>OS-00240 · Banner 3x2m</span><span class="dash-tag tag-green">Entregue</span></div>
-          <div class="dash-os-item"><span>OS-00239 · Malharia 150 peças</span><span class="dash-tag tag-blue">Arte</span></div>
-          <div class="dash-os-item"><span>OS-00238 · Flyers A5 5000un</span><span class="dash-tag tag-green">Entregue</span></div>
+        <div class="lista">
+          <div><span>OS-00241 · Camisetas empresa</span><span class="tag t-prod">Produção</span></div>
+          <div><span>OS-00240 · Banner 3x2 m</span><span class="tag t-ok">Entregue</span></div>
+          <div><span>MAL-00199 · 150 peças Dry Fit</span><span class="tag t-arte">Arte</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VÍDEO -->
-<section class="video-sec">
-  <div class="sec-inner video-grid">
+<section id="para-quem" class="nevoa">
+  <div class="wrap">
+    <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <h2>Feito para quem imprime, costura e instala</h2>
+    <p class="sub">Cada tela nasceu dentro de uma gráfica e malharia de verdade — por isso resolve o que os sistemas genéricos nem enxergam.</p>
+    <div class="tres">
+      <div class="seg" style="--c:var(--ciano)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+        <h3>Gráficas</h3><p>Orçamentos com preço certo, OS, aprovação de arte e produção no quadro — de cartão de visita a banner.</p>
+      </div>
+      <div class="seg" style="--c:var(--magenta)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.1a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.3-2.2z"/></svg>
+        <h3>Malharias</h3><p>Grade de tamanhos (adulto, feminino e infantil), costureiras, mockup, custo por peça e PDF para o cliente.</p>
+      </div>
+      <div class="seg" style="--c:#C9A400">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <h3>Comunicação visual</h3><p>Medidas, acabamentos, instalação e entrega com recibo — fachadas, adesivos e lonas sob controle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="escuro">
+  <div class="wrap video-grid">
     <div>
-      <div class="sec-tag">Veja em 1 minuto</div>
-      <h2 class="sec-title">Do orçamento à entrega,<br/>tudo em um só lugar</h2>
-      <ul class="video-points">
+      <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <h2>Do orçamento à entrega, em um minuto</h2>
+      <ul class="pontos">
         <li>Ordem de serviço, aprovação de arte e produção no Kanban</li>
         <li>Grade de tamanhos e costureiras na malharia</li>
         <li>Medidas, acabamento e entrega com recibo assinado</li>
         <li>Contas, comissões e caixa em tempo real</li>
       </ul>
-      <a href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C+quero+uma+demonstra%C3%A7%C3%A3o+do+GraficaPr%C3%B3!" target="_blank" class="btn-wpp">Quero uma demonstração →</a>
+      <a class="btn btn-verde" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C%20quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Gr%C3%A1fica%20Pr%C3%B3%21">Quero uma demonstração</a>
     </div>
-    <div class="video-frame">
-      <video controls playsinline preload="metadata" style="width:100%;display:block">
+    <div class="quadro">
+      <video controls playsinline preload="metadata" poster="/assets/og-image.png">
         <source src="https://raw.githubusercontent.com/graficavitalprint-ops/graficapro-site/main/video/graficapro-sistema.mp4" type="video/mp4"/>
-        Seu navegador não suporta vídeos HTML5.
+        Seu navegador não reproduz este vídeo.
       </video>
     </div>
   </div>
 </section>
 
-<!-- RECURSOS -->
 <section id="recursos">
-  <div class="sec-inner">
-    <div class="sec-head">
-      <div class="sec-tag">Recursos</div>
-      <h2 class="sec-title">Tudo que sua gráfica precisa</h2>
-      <p class="sec-sub">Uma plataforma completa desenvolvida especialmente para gráficas e confecções.</p>
-    </div>
-    <div class="rec-grid">
-      <div class="rec-card"><div class="rec-ico">📋</div><h3>Orçamentos Rápidos</h3><p>Crie orçamentos profissionais em segundos com cálculo automático de preços, descontos e prazos.</p></div>
-      <div class="rec-card"><div class="rec-ico">🎨</div><h3>Aprovação de Arte</h3><p>Envie artes para aprovação do cliente com link exclusivo e acompanhe o status em tempo real.</p></div>
-      <div class="rec-card"><div class="rec-ico">🏭</div><h3>Produção Kanban</h3><p>Visualize cada OS no quadro kanban: criação, impressão, acabamento, expedição e entrega.</p></div>
-      <div class="rec-card"><div class="rec-ico">🧵</div><h3>Malharia Completa</h3><p>Grade de tamanhos por sexo e infantil, costureiras, mockup, arte e custo por peça.</p></div>
-      <div class="rec-card"><div class="rec-ico">💰</div><h3>Financeiro Integrado</h3><p>Contas a pagar e receber, caixa por colaborador, comissões automáticas e relatórios.</p></div>
-      <div class="rec-card"><div class="rec-ico">📊</div><h3>Dashboard em Tempo Real</h3><p>Faturamento, OS abertas, clientes e indicadores do negócio atualizados a cada segundo.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- MÓDULOS -->
-<section class="recursos-sec" id="modulos">
-  <div class="sec-inner">
-    <div class="sec-head">
-      <div class="sec-tag">Módulos</div>
-      <h2 class="sec-title">Um sistema, todos os módulos</h2>
-      <p class="sec-sub">Todos inclusos em qualquer plano, sem custo adicional.</p>
-    </div>
-    <div class="mods-grid">
-      <div class="mod-item">📋 Orçamentos</div>
-      <div class="mod-item">📌 Ordens de Serviço</div>
-      <div class="mod-item">🎨 Aprovação de Arte</div>
-      <div class="mod-item">🏭 Produção Kanban</div>
-      <div class="mod-item">🧵 Malharia</div>
-      <div class="mod-item">👥 Clientes & CRM</div>
-      <div class="mod-item">💰 Financeiro</div>
-      <div class="mod-item">📦 Estoque</div>
-      <div class="mod-item">🚚 Expedição</div>
-      <div class="mod-item">💳 Caixa</div>
-      <div class="mod-item">📊 Relatórios</div>
-      <div class="mod-item">🏢 Filiais</div>
+  <div class="wrap">
+    <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <h2>Tudo o que a sua empresa precisa</h2>
+    <p class="sub">Uma plataforma completa, pensada para o dia a dia do balcão, da produção e da entrega.</p>
+    <div class="grade">
+      <div class="rec" style="--c:var(--ciano)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></div><h3>Orçamentos rápidos</h3><p>Orçamentos profissionais em segundos, com descontos, prazos e PDF com a sua marca.</p></div>
+      <div class="rec" style="--c:var(--magenta)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 0 0 0 20c1 0 1.5-.8 1.5-1.6 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-.9.7-1.6 1.6-1.6H16a6 6 0 0 0 6-6c0-4.4-4.5-8.4-10-8.4z"/></svg></div><h3>Aprovação de arte</h3><p>Envie a arte com link exclusivo e acompanhe a aprovação do cliente em tempo real.</p></div>
+      <div class="rec" style="--c:#C9A400"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="4" height="8" rx="1"/></svg></div><h3>Produção no Kanban</h3><p>Cada OS no quadro: criação, impressão, acabamento, expedição e entrega.</p></div>
+      <div class="rec" style="--c:var(--verde)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 3.5 16 2a4 4 0 0 1-8 0L3.6 3.5a2 2 0 0 0-1.3 2.2l.6 3.5a1 1 0 0 0 1 .8H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.1a1 1 0 0 0 1-.8l.6-3.5a2 2 0 0 0-1.3-2.2z"/></svg></div><h3>Malharia completa</h3><p>Grade por sexo e infantil, costureiras, mockup, arte e custo por peça.</p></div>
+      <div class="rec" style="--c:var(--ciano)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div><h3>Financeiro integrado</h3><p>Contas a pagar e receber, caixa por colaborador, comissões automáticas e relatórios.</p></div>
+      <div class="rec" style="--c:var(--magenta)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><h3>Painel em tempo real</h3><p>Faturamento, OS abertas, clientes e quem fez cada movimento do dia.</p></div>
+      <div class="rec novo" style="--c:var(--verde)"><div class="ico"><svg width="28" height="28"><use href="#i-wpp"/></svg></div><h3>WhatsApp integrado</h3><p>Orçamento e pedido em PDF direto no WhatsApp do cliente, cobrança e campanhas automáticas.</p></div>
+      <div class="rec novo" style="--c:var(--verde)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8v4H8zM8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></div><h3>Preço certo</h3><p>Calculadora com tecido, costura, estampa, impostos e o seu lucro: saiba quanto cobrar.</p></div>
     </div>
   </div>
 </section>
 
-<!-- COMO FUNCIONA -->
-<section class="como-sec" id="como-funciona">
-  <div class="sec-inner">
-    <div class="sec-head">
-      <div class="sec-tag">Como Funciona</div>
-      <h2 class="sec-title">Simples de usar, poderoso para crescer</h2>
-      <p class="sec-sub">Em menos de um dia você já está operando com o GraficaPró.</p>
-    </div>
-    <div class="como-steps">
-      <div class="como-step"><div class="como-num">1</div><h3>Fale conosco</h3><p>Entre em contato pelo WhatsApp e receba uma demonstração ao vivo do sistema.</p></div>
-      <div class="como-step"><div class="como-num">2</div><h3>Cadastro em minutos</h3><p>Crie sua conta e configure sua gráfica sem instalação, direto no navegador.</p></div>
-      <div class="como-step"><div class="como-num">3</div><h3>Importe seus dados</h3><p>Cadastre clientes, produtos e serviços de forma simples e rápida.</p></div>
-      <div class="como-step"><div class="como-num">4</div><h3>Comece a operar</h3><p>Crie orçamentos, OS e controle a produção no mesmo dia da contratação.</p></div>
+<section id="modulos" class="nevoa">
+  <div class="wrap">
+    <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <h2>Um sistema, todos os módulos</h2>
+    <p class="sub">Todos inclusos em qualquer plano, sem custo adicional.</p>
+    <div class="modulos">
+      <span>Orçamentos</span><span>Ordens de serviço</span><span>Aprovação de arte</span><span>Produção Kanban</span>
+      <span>Malharia</span><span>Clientes e CRM</span><span>Financeiro</span><span>Estoque</span>
+      <span>Expedição</span><span>Caixa</span><span>Relatórios</span><span>Filiais</span>
+      <span>Marketing e WhatsApp</span><span>Tabela de custos</span>
     </div>
   </div>
 </section>
 
-<!-- PLANOS -->
-<section id="planos">
-  <div class="sec-inner">
-    <div class="sec-head">
-      <div class="sec-tag">Planos</div>
-      <h2 class="sec-title">Escolha o plano ideal para sua gráfica</h2>
-      <p class="sec-sub">Todos os módulos inclusos em qualquer plano. Sem taxa de adesão. Cancele quando quiser.</p>
+<section id="como-funciona">
+  <div class="wrap">
+    <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <h2>Simples de usar, pronto para crescer</h2>
+    <p class="sub">Em menos de um dia você já está operando com o Gráfica Pró.</p>
+    <div class="passos">
+      <div class="passo"><h3>Fale com a gente</h3><p>Chame no WhatsApp e receba uma demonstração ao vivo do sistema.</p></div>
+      <div class="passo"><h3>Cadastro em minutos</h3><p>Sua empresa configurada sem instalação, direto no navegador.</p></div>
+      <div class="passo"><h3>Traga seus dados</h3><p>Cadastre clientes, produtos e serviços de forma simples e rápida.</p></div>
+      <div class="passo"><h3>Comece a operar</h3><p>Orçamentos, OS e produção no mesmo dia da contratação.</p></div>
     </div>
-    <div class="planos-grid">
-      <div class="plano-card">
-        <div class="plano-nome">Starter</div>
-        <div class="plano-preco">R$197<span>/mês</span></div>
-        <div class="plano-periodo">Ideal para gráficas em crescimento</div>
-        <ul class="plano-lista">
-          <li>Todos os módulos inclusos</li>
-          <li>Até 5 usuários</li>
-          <li>Sem filiais</li>
-          <li>Suporte por chat</li>
-          <li>Acesso 24h na nuvem</li>
+  </div>
+</section>
+
+<section id="planos" class="escuro">
+  <div class="wrap">
+    <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <h2>Escolha o plano ideal para a sua empresa</h2>
+    <p class="sub">Todos os módulos inclusos em qualquer plano. Sem taxa de adesão. Cancele quando quiser.</p>
+    <div class="planos">
+      <div class="plano">
+        <h3>Starter</h3><p class="para">Ideal para empresas em crescimento</p>
+        <div class="preco">R$ 197<small>/mês</small></div>
+        <ul>
+          <li><svg><use href="#i-ok"/></svg>Todos os módulos inclusos</li><li><svg><use href="#i-ok"/></svg>Até 5 usuários</li>
+          <li><svg><use href="#i-ok"/></svg>Sem filiais</li><li><svg><use href="#i-ok"/></svg>Suporte por chat</li><li><svg><use href="#i-ok"/></svg>Acesso 24h na nuvem</li>
         </ul>
-        <a href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C+quero+ser+cliente+GraficaPr%C3%B3.+Tenho+interesse+no+plano+Starter+de+R%24197%2Fm%C3%AAs." target="_blank" class="btn-plano">Quero o Starter →</a>
+        <a class="btn btn-contorno" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C%20quero%20ser%20cliente%20Gr%C3%A1fica%20Pr%C3%B3.%20Tenho%20interesse%20no%20plano%20Starter%20de%20R%24197%2Fm%C3%AAs.">Quero o Starter</a>
       </div>
-      <div class="plano-card destaque">
-        <div class="plano-badge">⭐ Mais popular</div>
-        <div class="plano-nome">Profissional</div>
-        <div class="plano-preco">R$397<span>/mês</span></div>
-        <div class="plano-periodo">Para gráficas com equipe e filiais</div>
-        <ul class="plano-lista">
-          <li>Todos os módulos inclusos</li>
-          <li>Usuários ilimitados</li>
-          <li>Filiais ilimitadas</li>
-          <li>Suporte prioritário</li>
-          <li>Acesso 24h na nuvem</li>
+      <div class="plano destaque">
+        <span class="selo">Mais popular</span>
+        <h3>Profissional</h3><p class="para">Para empresas com equipe e filiais</p>
+        <div class="preco">R$ 397<small>/mês</small></div>
+        <ul>
+          <li><svg><use href="#i-ok"/></svg>Todos os módulos inclusos</li><li><svg><use href="#i-ok"/></svg>Usuários ilimitados</li>
+          <li><svg><use href="#i-ok"/></svg>Filiais ilimitadas</li><li><svg><use href="#i-ok"/></svg>Suporte prioritário</li><li><svg><use href="#i-ok"/></svg>Acesso 24h na nuvem</li>
         </ul>
-        <a href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C+quero+ser+cliente+GraficaPr%C3%B3.+Tenho+interesse+no+plano+Profissional+de+R%24397%2Fm%C3%AAs." target="_blank" class="btn-plano dest">Quero o Profissional →</a>
+        <a class="btn btn-verde" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C%20quero%20ser%20cliente%20Gr%C3%A1fica%20Pr%C3%B3.%20Tenho%20interesse%20no%20plano%20Profissional%20de%20R%24397%2Fm%C3%AAs.">Quero o Profissional</a>
       </div>
-      <div class="plano-card">
-        <div class="plano-nome">Enterprise</div>
-        <div class="plano-preco">R$259<span>/mês</span></div>
-        <div class="plano-periodo">Para gráficas médias em expansão</div>
-        <ul class="plano-lista">
-          <li>Todos os módulos inclusos</li>
-          <li>Até 10 usuários</li>
-          <li>Sem filiais</li>
-          <li>Suporte dedicado</li>
-          <li>Acesso 24h na nuvem</li>
+      <div class="plano">
+        <h3>Enterprise</h3><p class="para">Para empresas médias em expansão</p>
+        <div class="preco">R$ 259<small>/mês</small></div>
+        <ul>
+          <li><svg><use href="#i-ok"/></svg>Todos os módulos inclusos</li><li><svg><use href="#i-ok"/></svg>Até 10 usuários</li>
+          <li><svg><use href="#i-ok"/></svg>Sem filiais</li><li><svg><use href="#i-ok"/></svg>Suporte dedicado</li><li><svg><use href="#i-ok"/></svg>Acesso 24h na nuvem</li>
         </ul>
-        <a href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C+quero+ser+cliente+GraficaPr%C3%B3.+Tenho+interesse+no+plano+Enterprise+de+R%24259%2Fm%C3%AAs." target="_blank" class="btn-plano">Quero o Enterprise →</a>
+        <a class="btn btn-contorno" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C%20quero%20ser%20cliente%20Gr%C3%A1fica%20Pr%C3%B3.%20Tenho%20interesse%20no%20plano%20Enterprise%20de%20R%24259%2Fm%C3%AAs.">Quero o Enterprise</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTATO -->
-<section class="contato-sec" id="contato">
-  <div class="sec-inner contato-grid">
+<section id="contato">
+  <div class="wrap contato">
     <div>
-      <div class="sec-tag">Fale Conosco</div>
-      <h2 class="sec-title">Pronto para organizar sua gráfica?</h2>
-      <p class="sec-sub">Fale agora com nossa equipe e receba uma demonstração gratuita. Respondemos em minutos.</p>
-      <div class="contato-info">
-        <div class="contato-item">
-          <div class="contato-item-ico g">💬</div>
-          <div><strong>WhatsApp</strong><br/><span style="color:var(--cinza2)">(93) 98409-3797</span></div>
-        </div>
-        <div class="contato-item">
-          <div class="contato-item-ico b">🌐</div>
-          <div><strong>Site</strong><br/><span style="color:var(--cinza2)">graficaprosistema.com.br</span></div>
-        </div>
-        <div class="contato-item">
-          <div class="contato-item-ico g">🕐</div>
-          <div><strong>Atendimento</strong><br/><span style="color:var(--cinza2)">Segunda a sexta, 8h às 18h</span></div>
-        </div>
+      <div class="cmyk" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <h2>Pronto para organizar a sua empresa?</h2>
+      <p class="sub">Fale agora com a nossa equipe e receba uma demonstração gratuita. Respondemos em minutos.</p>
+      <div class="infos">
+        <div class="info" style="--c:var(--verde)"><div class="ico"><svg><use href="#i-wpp"/></svg></div><div><strong>WhatsApp</strong><span>(93) 98409-3797</span></div></div>
+        <div class="info" style="--c:var(--ciano)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><div><strong>Site</strong><span>graficaprosistema.com.br</span></div></div>
+        <div class="info" style="--c:var(--magenta)"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><strong>Atendimento</strong><span>Segunda a sexta, das 8h às 18h</span></div></div>
       </div>
     </div>
-    <div class="contato-form">
+    <form class="form" onsubmit="enviarWpp(event)" novalidate>
       <h3>Solicite uma demonstração</h3>
-      <p>Preencha abaixo e envie direto pelo WhatsApp — sem formulário, sem espera!</p>
-      <input class="cf-input" type="text" id="cf-nome" placeholder="Seu nome *" required/>
-      <input class="cf-input" type="tel" id="cf-tel" placeholder="Seu WhatsApp *" required/>
-      <input class="cf-input" type="text" id="cf-graficamod" placeholder="Nome da sua gráfica"/>
-      <select class="cf-input" id="cf-plano">
-        <option value="">Qual plano te interessa?</option>
-        <option value="Starter (R$197/mês)">Starter — R$197/mês</option>
-        <option value="Profissional (R$397/mês)">Profissional — R$397/mês</option>
-        <option value="Enterprise (R$259/mês)">Enterprise — R$259/mês</option>
-        <option value="Ainda não sei">Ainda não sei, quero saber mais</option>
+      <p>Preencha e envie direto pelo WhatsApp, sem espera.</p>
+      <label for="cf-nome">Seu nome</label><input class="campo" id="cf-nome" autocomplete="name" required/>
+      <label for="cf-tel">Seu WhatsApp</label><input class="campo" id="cf-tel" type="tel" autocomplete="tel" required/>
+      <label for="cf-empresa">Nome da sua empresa</label><input class="campo" id="cf-empresa" autocomplete="organization"/>
+      <label for="cf-plano">Plano de interesse</label>
+      <select class="campo" id="cf-plano">
+        <option value="">Ainda não sei, quero saber mais</option>
+        <option value="Starter (R$197/mês)">Starter — R$ 197/mês</option>
+        <option value="Profissional (R$397/mês)">Profissional — R$ 397/mês</option>
+        <option value="Enterprise (R$259/mês)">Enterprise — R$ 259/mês</option>
       </select>
-      <button class="btn-wpp-form" onclick="enviarWpp()">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.122 1.524 5.855L.055 23.454a.75.75 0 00.919.919l5.647-1.47A11.93 11.93 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.894 0-3.669-.494-5.203-1.36l-.374-.214-3.879 1.009 1.012-3.793-.233-.386A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Enviar pelo WhatsApp
-      </button>
-    </div>
+      <button class="btn btn-verde" type="submit"><svg width="20" height="20"><use href="#i-wpp"/></svg>Enviar pelo WhatsApp</button>
+      <p class="aviso" id="cf-aviso" role="alert">Preencha o seu nome e o seu WhatsApp.</p>
+    </form>
   </div>
 </section>
+</main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Gráfica<span>Pró</span></div>
-      <div class="footer-copy">© 2026 GraficaPró · Todos os direitos reservados</div>
-    </div>
-    <div class="footer-links">
-      <a href="#recursos">Recursos</a>
-      <a href="#planos">Planos</a>
-      <a href="#contato">Contato</a>
-      <a href="https://app.graficaprosistema.com.br" target="_blank">Acessar sistema</a>
-    </div>
+  <div class="wrap">
+    <img src="/assets/logo-horizontal-negativa.svg" alt="Gráfica Pró" width="194" height="56"/>
+    <nav aria-label="Rodapé"><a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="#contato">Contato</a><a href="https://app.graficaprosistema.com.br">Acessar o sistema</a></nav>
+    <p class="direitos">© 2026 Gráfica Pró · Gestão para gráficas, malharias e comunicação visual</p>
   </div>
 </footer>
 
-<!-- WPP FLUTUANTE -->
-<a href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C+quero+ser+cliente+GraficaPr%C3%B3.+Pode+me+passar+qual+plano+%C3%A9+ideal+para+mim%3F" target="_blank" class="wpp-float" title="Falar no WhatsApp">💬</a>
+<a class="wpp" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" href="https://api.whatsapp.com/send?phone=5593984093797&text=Ol%C3%A1%2C%20quero%20ser%20cliente%20Gr%C3%A1fica%20Pr%C3%B3.%20Pode%20me%20passar%20qual%20plano%20%C3%A9%20ideal%20para%20mim%3F"><svg><use href="#i-wpp"/></svg></a>
 
 <script>
-function enviarWpp(){
-  const nome = document.getElementById('cf-nome').value.trim()
-  const tel = document.getElementById('cf-tel').value.trim()
-  const graficamod = document.getElementById('cf-graficamod').value.trim()
-  const plano = document.getElementById('cf-plano').value
-  if(!nome||!tel){alert('Por favor, preencha seu nome e WhatsApp.');return}
-  let msg = `Olá, quero ser cliente GraficaPró!%0A%0A`
-  msg += `*Nome:* ${encodeURIComponent(nome)}%0A`
-  msg += `*WhatsApp:* ${encodeURIComponent(tel)}%0A`
-  if(graficamod) msg += `*Gráfica:* ${encodeURIComponent(graficamod)}%0A`
-  if(plano) msg += `*Plano de interesse:* ${encodeURIComponent(plano)}%0A`
-  msg += `%0AMe passa mais informações, por favor!`
-  window.open(`https://api.whatsapp.com/send?phone=5593984093797&text=${msg}`,'_blank')
+// folhas CMYK abrem em leque uma única vez, ao carregar
+requestAnimationFrame(() => setTimeout(() => document.getElementById('palco').classList.remove('inicio'), 150));
+
+function enviarWpp(e){
+  e.preventDefault();
+  const nome = document.getElementById('cf-nome').value.trim();
+  const tel = document.getElementById('cf-tel').value.trim();
+  const empresa = document.getElementById('cf-empresa').value.trim();
+  const plano = document.getElementById('cf-plano').value;
+  const aviso = document.getElementById('cf-aviso');
+  if (!nome || !tel) { aviso.style.display = 'block'; (nome ? document.getElementById('cf-tel') : document.getElementById('cf-nome')).focus(); return; }
+  aviso.style.display = 'none';
+  let msg = 'Olá, quero ser cliente Gráfica Pró!\n\n';
+  msg += '*Nome:* ' + nome + '\n*WhatsApp:* ' + tel + '\n';
+  if (empresa) msg += '*Empresa:* ' + empresa + '\n';
+  msg += '*Plano de interesse:* ' + (plano || 'ainda não sei') + '\n\nMe passa mais informações, por favor!';
+  window.open('https://api.whatsapp.com/send?phone=5593984093797&text=' + encodeURIComponent(msg), '_blank');
 }
 </script>
 </body>
